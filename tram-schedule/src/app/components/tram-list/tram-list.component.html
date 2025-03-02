@@ -1,0 +1,15 @@
+<div class="tram-list-container">
+    <h2>🚋 Upcoming Trams from Luma to Linde</h2>
+    
+    <ul class="tram-list">
+      <li *ngFor="let tram of trams" class="tram-item">
+        <span class="tram-icon">🚋</span> <strong>{{ tram.destination }}</strong>  
+        <p>⏰ Scheduled: <span class="time">{{ tram.scheduled }}</span></p>
+        <!-- <p>🚦 Status: <span [ngClass]="getTramStatus(tram.state)">{{ getTramStatus(tram.state) }}</span></p>
+         -->
+        <!-- Countdown Timer -->
+        <app-tram-timer [scheduledTime]="tram.scheduled" [status]="tram.state"></app-tram-timer>
+      </li>
+    </ul>
+  </div>
+  
