@@ -1,27 +1,72 @@
-# TramSchedule
+# 🚋 Tram Schedule App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+## 📌 Overview
+This Angular web application displays **trams departing from Luma station towards Linde station**. The app fetches data from a mock JSON file and provides additional fun features such as:
 
-## Development server
+✅ **Live Countdown Timer** – Real-time updates until the tram departs.   
+✅ **Fun Tram Facts** – Shows random tram facts each time the app loads.  
+✅ **Funny UI Design** – Animated tram list with emojis and colors.  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🎯 Features
+### 🚀 Core Features
+- Fetches **tram schedule** from `mock-data.json`.
+- Filters **trams departing from Luma** heading towards Linde.
+- Displays **real-time countdown** for the next tram.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 🎨 Fun Features
+- **Emoji-based status messages** (🚋 Ready, 🕒 On Time, ⚠️ Delayed).
+- **Hover effects & colorful animated cards** for tram listings.
+- **Tram facts** displayed randomly on page load.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠️ How to Run the Project
+### **1️⃣ Install Dependencies**
+Make sure you have **Angular CLI** installed:
+```sh
+npm install -g @angular/cli
+```
+Clone the repository and install dependencies:
+```sh
+git clone <repo-url>
+cd tram-schedule
+npm install
+```
 
-## Running unit tests
+### **2️⃣ Run the Application**
+Start the development server:
+```sh
+ng serve
+```
+Visit **`http://localhost:4200`** in your browser.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 📂 File Structure & Contributions
+### **`src/app/`**
+| File | Description |
+|-------|-------------|
+| **services/tram.service.ts** | Fetches tram data from `mock-data.json` and filters Luma → Linde trams. |
+| **services/tram-facts.service.ts** | Provides random fun tram facts. |
+| **components/tram-list/** | Displays the tram schedule list with animations. |
+| **components/tram-timer/** | Shows a countdown timer for tram departures. |
+| **components/tram-fact/** | Displays random tram facts on load. |
+| **app.module.ts** | Registers all Angular modules and components. |
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🌎 Deployment
+### **Deploy to GitHub Pages**
+1. Build the project:
+   ```sh
+   ng build --base-href "/your-repo-name/"
+   ```
+2. Deploy using Angular CLI:
+   ```sh
+   npx angular-cli-ghpages --dir=dist/tram-schedule
+   ```
+3. Visit **GitHub Pages URL** to see your deployed app!
+
