@@ -49,7 +49,6 @@ Visit **`http://localhost:4200`** in your browser.
 | File | Description |
 |-------|-------------|
 | **services/tram.service.ts** | Fetches tram data from `mock-data.json` and filters Luma → Linde trams. |
-| **services/tram-facts.service.ts** | Provides random fun tram facts. |
 | **components/tram-list/** | Displays the tram schedule list with animations. |
 | **components/tram-timer/** | Shows a countdown timer for tram departures. |
 | **components/tram-fact/** | Displays random tram facts on load. |
