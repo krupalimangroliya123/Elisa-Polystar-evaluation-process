@@ -1,3 +1,4 @@
+
 <div class="tram-list-container">
     <h2>🚋 Upcoming Trams from Luma to Linde</h2>
     
@@ -8,7 +9,10 @@
         <!-- <p>🚦 Status: <span [ngClass]="getTramStatus(tram.state)">{{ getTramStatus(tram.state) }}</span></p>
          -->
         <!-- Countdown Timer -->
-        <app-tram-timer [scheduledTime]="tram.scheduled" [status]="tram.state"></app-tram-timer>
+        <p>🚦 Status: <span [ngClass]="getTramStatus(tram.state)">{{ getTramStatus(tram.state) }}</span></p>
+        <div>
+            <p>🕒 Time Left: <strong>{{ tram.display }}</strong></p>
+          </div>
       </li>
     </ul>
   </div>

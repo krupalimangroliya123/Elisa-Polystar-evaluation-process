@@ -31,7 +31,6 @@ npm install -g @angular/cli
 Clone the repository and install dependencies:
 ```sh
 git clone <repo-url>
-cd tram-schedule
 npm install
 ```
 

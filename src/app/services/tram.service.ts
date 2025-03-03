@@ -31,11 +31,29 @@ export class TramService {
   //get list of dipartures
   getDepartures(): Observable<any[]> {
     return this.http.get<any>(this.apiUrl).pipe(
-      map(data => 
-        data.departures.filter((tram:any) => 
-          tram.stop_area.name === 'Luma'&& tram.line.transport_mode === "TRAM" && !tram.direction.includes('Sickla')
-        )
-      )
+      map(data => {
+        const stopAreas = data.stop_deviations[0]?.scope?.stop_areas || [];
+
+        return data.departures.map((tram:any) => {
+          // Create deviations dynamically
+          const deviations = stopAreas
+            .filter((stop:any) => stop.name !== tram.stop_area.name && stop.name !== tram.destination)
+            .map((stop:any) => ({
+              stop_name: stop.name,
+              stop_id: stop.id,
+              status: "ON_ROUTE"
+            }));
+
+          return { ...tram, deviations }; // Add deviations to each tram
+        }) .filter((tram:any) =>
+          tram.line.transport_mode == 'TRAM' &&
+          tram.line.designation == '30' &&
+          tram.direction_code == 1 &&
+          tram.stop_area.name === 'Luma' &&  // Tram departs from Luma
+          tram.destination !== 'Linde' &&  // Linde is NOT the last stop
+          tram.deviations.some((dev:any) => dev.stop_name === 'Linde') // Tram passes through Linde
+        );
+      })
     );
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TramService } from '../../services/tram.service';
 import { CommonModule } from '@angular/common';
-import { TramTimerComponent } from '../tram-timer/tram-timer.component';
 
 interface Tram {
   destination: string;
@@ -12,7 +11,7 @@ interface Tram {
 @Component({
   selector: 'app-tram-list',
   standalone:true,
-  imports:[CommonModule,TramTimerComponent],
+  imports:[CommonModule],
   templateUrl: './tram-list.component.html',
   styleUrls: ['./tram-list.component.css']
 })
@@ -23,33 +22,19 @@ export class TramListComponent implements OnInit {
 
   ngOnInit(): void {
     this.tramService.getDepartures().subscribe(data => {
-      this.trams = data.map(tram => ({
-        ...tram,
-        countdown: this.calculateCountdown(tram.departureTime)
-      }));
-      setInterval(() => this.updateCountdowns(), 1000);
-    });
-  }
-
-  //calsulate countdown
-  private calculateCountdown(departureTime: string): number {
-    return Math.max(Math.floor((new Date(departureTime).getTime() - new Date().getTime()) / 60000), 0);
-  }
-
-  //get countdowns
-  private updateCountdowns(): void {
-    this.trams.forEach(tram => {
-      tram.countdown = this.calculateCountdown(tram.departureTime);
+      this.trams = data;
     });
   }
 
 //get Fun status
-  getTramStatus(state: string): string {
-    switch (state) {
-      case 'ATSTOP': return '🚋 Ready to Depart!';
-      case 'EXPECTED': return '🕒 On Time!';
-      case 'DELAYED': return '⚠️ Delayed!';
-      default: return '🤷‍♂️ Unknown Status';
-    }
+ 
+getTramStatus(state: string): string {
+  switch (state) {
+    case 'ATSTOP': return '🛑 At Stop!';
+    case 'EXPECTED': return '🕒 Expected!';
+    case 'DELAYED': return '⚠️ Delayed!';
+    case 'DEPARTED': return '🤷‍♂️ You Missed!';
+    default: return '🤷‍♂️ Unknown Status';
   }
+}
 }
