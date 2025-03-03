@@ -13,7 +13,6 @@ This Angular web application displays **trams departing from Luma station toward
 ### 🚀 Core Features
 - Fetches **tram schedule** from `mock-data.json`.
 - Filters **trams departing from Luma** heading towards Linde.
-- Displays **real-time countdown** for the next tram.
 
 ### 🎨 Fun Features
 - **Emoji-based status messages** (🚋 Ready, 🕒 On Time, ⚠️ Delayed).
@@ -49,7 +48,6 @@ Visit **`http://localhost:4200`** in your browser.
 |-------|-------------|
 | **services/tram.service.ts** | Fetches tram data from `mock-data.json` and filters Luma → Linde trams. |
 | **components/tram-list/** | Displays the tram schedule list with animations. |
-| **components/tram-timer/** | Shows a countdown timer for tram departures. |
 | **components/tram-fact/** | Displays random tram facts on load. |
 | **app.module.ts** | Registers all Angular modules and components. |
 
